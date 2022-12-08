@@ -1,12 +1,24 @@
-To configure this module, you need to go to
-*Invoicing > Reporting > MIS Reporting > MIS Reports* and create a new MIS Report
-according to the desired time periods and using one of the following
-templates provided by this module:
+For regular usage, see `Usage` below. This section is to clarify optional
+functionality to developers.
 
-* Compte de résultat (FR - liasse fiscale)
-* Compte de résultat (FR - liasse fiscale simplifiée)
-* Bilan (FR - liasse fiscale)
-* Bilan (FR - liasse fiscale simplifiée)
+To configure a model to use the Many2one style search field, make the model
+inherit from `date.range.search.mixin`:
 
-To obtain correct results, the account codes prefixes must match the official
-French chart of accounts.
+.. code-block::
+
+    class AccountMove(models.Model):
+        _name = "account.move"
+        _inherit = ["account.move", "date.range.search.mixin"]
+
+This will make a `Period` field show up in the search view:
+
+  .. figure:: https://raw.githubusercontent.com/OCA/server-tools/12.0/date_range/static/description/date_range_many2one_search_field.png
+     :scale: 80 %
+     :alt: Date range Many2one search field
+
+By default, the mixin works on the `date` field. If you want the mixin to work
+on a field with a different name, you can set a property on your model:
+
+.. code-block::
+
+   _date_range_search_field = "invoice_date"

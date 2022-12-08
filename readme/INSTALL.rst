@@ -1,1 +1,1 @@
-This module depends on the *mis_builder* module, which is available in the OCA project `mis-builder <https://github.com/OCA/mis-builder>`_.
+The addon use the daterange method from postgres. This method is supported as of postgresql 9.2

@@ -1,23 +1,27 @@
-# Copyright 2015-2020 Akretion (http://www.akretion.com)
-# @author Alexis de Lattre <alexis.delattre@akretion.com>
+# Copyright 2016 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
 {
-    "name": "MIS reports for France",
-    "version": "14.0.1.1.0",
-    "category": "Accounting & Finance",
+    "name": "Date Range",
+    "summary": "Manage all kind of date range",
+    "version": "14.0.2.1.1",
+    "category": "Uncategorized",
+    "website": "https://github.com/OCA/server-ux",
+    "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "summary": "MIS Report templates for the French P&L and Balance Sheets",
-    "author": "Akretion,Odoo Community Association (OCA)",
-    "maintainers": ["alexis-via"],
-    "website": "https://github.com/OCA/l10n-france",
-    "depends": ["mis_builder"],
-    "data": [
-        "data/mis_report_styles.xml",
-        "data/mis_report_pl.xml",
-        "data/mis_report_pl_simplified.xml",
-        "data/mis_report_bs.xml",
-        "data/mis_report_bs_simplified.xml",
-    ],
     "installable": True,
+    "depends": [
+        "web",
+    ],
+    # odoo_test_helper is needed for the tests
+    "data": [
+        "data/ir_cron_data.xml",
+        "security/ir.model.access.csv",
+        "security/date_range_security.xml",
+        "views/assets.xml",
+        "views/date_range_view.xml",
+        "wizard/date_range_generator.xml",
+    ],
+    "qweb": ["static/src/xml/date_range.xml"],
+    "development_status": "Mature",
+    "maintainers": ["lmignon"],
 }
